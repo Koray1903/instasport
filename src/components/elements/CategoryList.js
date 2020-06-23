@@ -7,22 +7,21 @@ const CategoryList = (props) => {
 
   useEffect(() => {
     props.fetchCategories(props.fetchURL);
-  }, []);
+  }, [props.currentCity]);
 
 
   return (
     <div className="CategoryListDiv">
-      {props.categoryList.map((element, index) =>
+      {props.categoryList.map((category, index) =>
         <button
           className="CategoryListButton"
           onClick={() => {
-            console.log(element);
-            props.setCurrentCategory(element);
+            props.setCurrentCategory(category);
           }}
-          key={index}>{element}</button>
+          key={index}>{category}</button>
       )}
 
-      <img className="UndoButton"
+      <img className="UndoButton" // reset filter
            onClick={() => {
              props.setCurrentCategory("");
            }}
@@ -35,6 +34,7 @@ const CategoryList = (props) => {
 const mapStateToProps = state => {
   return {
     categoryList: state.reducerClub.categoryList,
+    currentCity: state.reducerClub.currentCity
   };
 };
 

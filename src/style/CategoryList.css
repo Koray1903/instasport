@@ -11,7 +11,7 @@
   align-content: space-between;
   border-bottom: 2px solid #2864f0;
   padding-bottom: 1rem;
-  animation: fade-in 3s ease-in-out both;
+  animation: fade-in 4s ease-in-out both;
 }
 
 @keyframes fade-in {
@@ -39,5 +39,53 @@
 .CategoryListButton:hover {
   animation: heartbeat 1.5s ease-in-out infinite both;
 }
+
+.CategoryListButton:focus {
+  outline: 0 !important;
+  color: black;
+  animation: vibrate-1 0.3s linear infinite both;
+}
+
+@keyframes vibrate-1 {
+  0% {
+    transform: translate(0);
+  }
+  20% {
+    transform: translate(-2px, 2px);
+  }
+  40% {
+    transform: translate(-2px, -2px);
+  }
+  60% {
+    transform: translate(2px, 2px);
+  }
+  80% {
+    transform: translate(2px, -2px);
+  }
+  100% {
+    transform: translate(0);
+  }
+}
+
+.UndoButton {
+  height: 4vh;
+  cursor: pointer;
+  align-self: center;
+}
+
+.UndoButton:active{
+  animation: rotate-center 0.2s ease-in-out reverse both;
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+
 
 /* CATEGORY LIST */

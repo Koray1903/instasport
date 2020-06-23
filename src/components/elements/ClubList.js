@@ -2,6 +2,8 @@ import React, {useEffect} from 'react';
 import {fetchClubs} from "../../redux";
 import {connect} from "react-redux";
 import "../../style/ClubList.css";
+import { Spinner } from "react-bootstrap";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const ClubList = (props) => {
 
@@ -12,13 +14,13 @@ const ClubList = (props) => {
 
   return (
     <div className="ClubListDiv">
-      {props.filteredClubList.map((element, index) =>
+      {props.filteredClubList.map((club, index) =>
         <div className="LogoTextDiv">
-          <a href={element.link} target="_blank">
+          <a href={club.link} target="_blank">
             <img
               className="ClubListLogo"
               key={index}
-              src={element.logo ? element.logo : "./_23-2147946074.jpg"}
+              src={club.logo ? club.logo : "./_23-2147946074.jpg"}
               onError={ e => {
                 e.target.onerror = null;
                 e.target.src = "./_23-2147946074.jpg"; // Dummy club image
@@ -26,9 +28,13 @@ const ClubList = (props) => {
             />
 
           </a>
-          <span className="ClubTitle">{element.title_short}</span>
+          <span className="ClubTitle">{club.title_short}</span>
         </div>
       )}
+
+      {props.filteredClubList.length <1 && <Spinner animation="border" role="status">
+        <span className="sr-only">Loading...</span>
+      </Spinner>}
     </div>
   );
 };

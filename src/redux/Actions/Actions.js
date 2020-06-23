@@ -36,7 +36,7 @@ export const fetchCategories = url => {
 
         let categoryArr = data.map(element => element.activity.map(element => element.slug));
 
-        function merge(arr) {
+        function merge(arr) { // merges separate arrays
           let newArr = [];
           for (let x = 0; x < arr.length; x++) {
             for (let y = 0; y < arr[x].length; y++) {
@@ -46,7 +46,7 @@ export const fetchCategories = url => {
           return newArr;
         }
 
-        let uniqueMergedCategoryArr = new Set(merge(categoryArr));
+        let uniqueMergedCategoryArr = new Set(merge(categoryArr)); // remove duplicates
 
         dispatch(fetchedCategories(uniqueMergedCategoryArr));
       });
@@ -96,5 +96,4 @@ export const setCurrentCategory = (data) => {
     payload: data
   };
 };
-
 /* SET CITY & CATEGORY */

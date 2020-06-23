@@ -1,6 +1,6 @@
 import React, {useEffect} from "react";
 import {connect} from "react-redux";
-import {fetchCities,setCurrentCity} from "../../redux";
+import { fetchCities, setCurrentCity, setCurrentCategory} from "../../redux";
 import "../../style/CityList.css";
 
 const CityList = (props) => {
@@ -11,17 +11,17 @@ const CityList = (props) => {
 
   return (
     <div className="CityListDiv">
-      {props.cityList.map((element, index) =>
+      {props.cityList.map((city, index) =>
         <button
           className="CityListButton"
           onClick={() => {
-            console.log(element);
-            props.setCurrentCity(element);
+            props.setCurrentCity(city);
+            props.setCurrentCategory("");
           }}
-          key={index}>{element}</button>
+          key={index}>{city}</button>
       )}
 
-      <img className="UndoButton"
+      <img className="UndoButton" // reset filter
            onClick={() => {
              props.setCurrentCity("");
            }}
@@ -31,10 +31,9 @@ const CityList = (props) => {
   );
 };
 
-
 const mapStateToProps = state => {
   return {
-    cityList: state.reducerClub.cityList,
+    cityList: state.reducerClub.cityList
   };
 };
 
@@ -42,6 +41,7 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchCities: url => dispatch(fetchCities(url)),
     setCurrentCity: city => dispatch(setCurrentCity(city)),
+    setCurrentCategory: category => dispatch(setCurrentCategory(category)),
   };
 };
 

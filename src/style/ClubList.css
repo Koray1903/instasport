@@ -13,19 +13,19 @@
   width: 12vw;
   text-align: center;
   margin-bottom: 2rem;
-  animation: fade-in 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  animation: fade-in 3s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
   margin-left: 1.1rem;
   margin-right: 0.6em;
 }
 
 .ClubListLogo {
-  border: 2px solid black;
+  border: 2px solid #2864f0;
   border-radius: 1rem;
   width: 100%;
   display: block;
   box-sizing: border-box;
   margin-bottom: 0.5rem;
-  animation: roll-in-blurred-left 2s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
+  animation: roll-in-blurred-left 3s cubic-bezier(0.230, 1.000, 0.320, 1.000) both;
 }
 
 @keyframes roll-in-blurred-left {
@@ -42,7 +42,7 @@
 }
 
 .ClubListLogo:hover {
-  opacity: 0.8;
+  box-shadow: 0 0 2px 2px #2864f0;
 }
 
 .ClubTitle {

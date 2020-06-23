@@ -22,11 +22,38 @@ const clubReducer = (state = initialState, action) => {
         cityList: [...action.payload]
       };
 
-    case FETCH_CATEGORIES:
+    case FETCH_CATEGORIES: {
+
+      let newArr = [];
+
+      if (state.currentCity) { // if city selected
+
+        let filteredByCityArr = state.clubList.filter(element => element.city.title === state.currentCity);
+        let categoryArr = filteredByCityArr.map(element => element.activity.map(element => element.slug));
+
+        function merge(arr) { // merges separate arrays
+          let newArr = [];
+          for (let x = 0; x < arr.length; x++) {
+            for (let y = 0; y < arr[x].length; y++) {
+              newArr.push(arr[x][y]);
+            }
+          }
+          return newArr;
+        }
+
+        let uniqueMergedCategoryArr = new Set(merge(categoryArr)); // remove duplicates
+
+        newArr = [...uniqueMergedCategoryArr];
+
+      } else { // if no city selected (default)
+        newArr = [...action.payload];
+      }
+
       return {
         ...state,
-        categoryList: [...action.payload]
+        categoryList: newArr
       };
+    }
 
     case FETCH_CLUBS: {
 
@@ -36,17 +63,17 @@ const clubReducer = (state = initialState, action) => {
 
         if (state.currentCity && state.currentCategory) { // Both city and category selected
           for (let y = 0; y < state.clubList[x].activity.length; y++) {
-            if (state.clubList[x].city.title == state.currentCity && state.clubList[x].activity[y].slug == state.currentCategory) {
+            if (state.clubList[x].city.title === state.currentCity && state.clubList[x].activity[y].slug === state.currentCategory) {
               newArr.push(state.clubList[x]);
             }
           }
         } else if (state.currentCity) { // Only city selected
-          if (state.clubList[x].city.title == state.currentCity) {
+          if (state.clubList[x].city.title === state.currentCity) {
             newArr.push(state.clubList[x]);
           }
         } else if (state.currentCategory) { // Only category selected
           for (let y = 0; y < state.clubList[x].activity.length; y++) {
-            if (state.clubList[x].activity[y].slug == state.currentCategory) {
+            if (state.clubList[x].activity[y].slug === state.currentCategory) {
               newArr.push(state.clubList[x]);
             }
           }
@@ -63,7 +90,6 @@ const clubReducer = (state = initialState, action) => {
         filteredClubList: newArr
       };
     }
-
 
     case SET_CURRENT_CITY:
 
