@@ -1,26 +1,28 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./style/App.css";
+import {Provider} from "react-redux";
+import store from "./redux/store";
+import Header from "./components/elements/Header";
+import CityList from "./components/elements/CityList";
+import CategoryList from "./components/elements/CategoryList";
+import ClubList from "./components/elements/ClubList";
 
-function App() {
+const App = () => {
+
+  const fetchURL = "https://instasport.co/dashboard/api/v1/clubs/?format=json";
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Provider store={store}>
+
+        <Header />
+        <CityList fetchURL={fetchURL}/>
+        <CategoryList fetchURL={fetchURL}/>
+        <ClubList fetchURL={fetchURL}/>
+
+      </Provider>
+    </>
   );
-}
+};
 
 export default App;

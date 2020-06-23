@@ -1,0 +1,85 @@
+/* CITY LIST */
+.CityListDiv {
+  margin-left: 2vw;
+  width: 70vw;
+  height: auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-content: space-between;
+  border-bottom: 2px solid #2864f0;
+  padding-bottom: 1rem;
+  animation: fade-in 3s ease-in-out both;
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.CityListButton {
+  border: none;
+  text-shadow: 2px 2px 6px #000000;
+  background: transparent;
+  height: max-content;
+  border-radius: 0.5rem;
+  padding: 0 0.5rem 0 0.5rem;
+  color: white;
+  font-size: 1.4rem;
+  margin-right: 1rem;
+  margin-bottom: 0.5rem;
+  cursor: pointer;
+}
+
+.CityListButton:hover {
+  animation: heartbeat 1.5s ease-in-out infinite both;
+}
+
+@keyframes heartbeat {
+  from {
+    transform: scale(1);
+    transform-origin: center center;
+    animation-timing-function: ease-out;
+  }
+  10% {
+    transform: scale(0.91);
+    animation-timing-function: ease-in;
+  }
+  17% {
+    transform: scale(0.98);
+    animation-timing-function: ease-out;
+  }
+  33% {
+    transform: scale(0.87);
+    animation-timing-function: ease-in;
+  }
+  45% {
+    transform: scale(1);
+    animation-timing-function: ease-out;
+  }
+}
+
+.UndoButton {
+  height: 4vh;
+  cursor: pointer;
+  align-self: center;
+}
+
+@keyframes rotate-center {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.UndoButton:active {
+  animation: rotate-center 0.2s ease-in-out reverse both;
+}
+
+/* CITY LIST */

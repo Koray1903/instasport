@@ -1,0 +1,48 @@
+/* LOGO */
+.LogoDiv {
+  display: flex;
+  align-items: center;
+  align-content: center;
+  height: 15vh;
+  margin-left: 2vw;
+  width: min-content;
+}
+
+.Logo {
+  height: 10vh;
+  display: block;
+  animation: slide-in-left 2s ease-in-out;
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-1000px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.LogoText {
+  font-size: 3rem;
+  font-weight: bold;
+  color: #2864f0;
+  margin-left: 1vw;
+  animation: focus-in-expand 1s cubic-bezier(0.250, 0.460, 0.450, 0.940) both;
+}
+
+@keyframes focus-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    filter: blur(12px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+/* LOGO */
